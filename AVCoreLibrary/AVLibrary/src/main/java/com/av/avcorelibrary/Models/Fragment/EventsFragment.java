@@ -23,6 +23,8 @@ import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import retrofit2.Call;
@@ -38,7 +40,9 @@ public class EventsFragment extends Fragment {
     private ArrayList<EventListObject> mResultSet = new ArrayList<>();
     private Realm realm;
     private RealmResults<EventListObject> results;
-    private ListView listview;
+
+    @BindView(R.id.listview_events)
+    ListView listview;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -60,7 +64,8 @@ public class EventsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        listview = (ListView) view.findViewById(R.id.listview_events);
+
+        ButterKnife.bind(this, view);
 
         if (results.isEmpty()){
             requestApiGetEvents();
@@ -72,11 +77,7 @@ public class EventsFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                AVEngine.switchFragment((BaseActivity) getActivity(), new SlidingDrawerFragment(), ((BaseActivity) getActivity()).getFrameLayout());
-
                 startActivity(new Intent(getActivity(), SlidingDrawerActivity.class));
-
-
             }
         });
 

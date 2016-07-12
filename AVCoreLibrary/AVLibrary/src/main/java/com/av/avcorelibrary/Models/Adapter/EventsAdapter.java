@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
 /**
@@ -22,9 +24,14 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
         RealmResults<EventListObject> mData;
         int mResId;
 
-        class ViewHolder{
-            TextView text1;
-        }
+        static class ViewHolder {
+            @BindView(R.id.eventname) TextView text1;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+            }
+         }
+
 
         public EventsAdapter(Context context, int resource, RealmResults<EventListObject> data) {
             super(context, resource, data);
@@ -42,9 +49,8 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
                 //Inflate layout
                 LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
                 convertView = inflater.inflate(mResId, null);
-                holder = new ViewHolder();
+                holder = new ViewHolder(convertView);
 
-                holder.text1 = (TextView) convertView.findViewById(R.id.eventname);
                 convertView.setTag(holder);
             }
             else { holder = (ViewHolder) convertView.getTag(); }
