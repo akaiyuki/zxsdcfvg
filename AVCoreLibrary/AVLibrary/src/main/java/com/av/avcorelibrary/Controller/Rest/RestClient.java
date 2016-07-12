@@ -1,5 +1,7 @@
 package com.av.avcorelibrary.Controller.Rest;
 
+import android.util.Log;
+
 import com.av.avcorelibrary.Controller.ApiService.ApiServiceEvent.ApiServiceEvent;
 import com.av.avcorelibrary.Controller.Configuration.AVConfiguration;
 import com.google.gson.Gson;
@@ -13,20 +15,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestClient {
 
-    private ApiServiceEvent apiService;
+    private ApiServiceEvent apiServiceEvent;
+    private Retrofit retrofit;
 
-    public RestClient()
+    // Api Service Classes
+    public static String eventApiService = "ApiServiceEvent.class";
+
+
+    public RestClient(String className)
     {
+
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")
                 .create();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(getAVConfiguration())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        apiService = retrofit.create(ApiServiceEvent.class);
+        getApiRestService(className);
+
     }
 
     public static String getAVConfiguration(){
@@ -37,9 +46,17 @@ public class RestClient {
         }
     }
 
-    public ApiServiceEvent getApiService()
+    public ApiServiceEvent getApiServiceEvent()
     {
-        return apiService;
+        return apiServiceEvent;
     }
+
+    private void getApiRestService(String apiServiceSelected){
+        if (apiServiceSelected.equalsIgnoreCase(eventApiService)){
+            apiServiceEvent = retrofit.create(ApiServiceEvent.class);
+            getApiServiceEvent();
+        }
+    }
+
 
 }

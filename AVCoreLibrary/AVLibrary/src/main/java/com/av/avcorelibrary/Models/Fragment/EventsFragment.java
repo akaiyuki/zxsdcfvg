@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.av.avcorelibrary.Controller.ApiService.ApiServiceEvent.ApiServiceEvent;
 import com.av.avcorelibrary.Controller.Core.AVEngine;
 import com.av.avcorelibrary.Controller.Core.BaseActivity;
 import com.av.avcorelibrary.Controller.Rest.ApiResponse;
@@ -70,8 +71,9 @@ public class EventsFragment extends Fragment {
 
     /* api call */
     private void requestApiGetEvents(){
-        RestClient restClient = new RestClient();
-        Call<ApiResponse> call = restClient.getApiService().getEvent("0","1");
+        RestClient restClient = new RestClient(RestClient.eventApiService);
+
+        Call<ApiResponse> call = restClient.getApiServiceEvent().getEvent("0","1");
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
