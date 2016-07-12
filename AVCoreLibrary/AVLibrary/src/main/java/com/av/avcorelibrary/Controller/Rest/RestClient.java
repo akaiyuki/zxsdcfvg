@@ -22,11 +22,19 @@ public class RestClient {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AVConfiguration.testBaseUrl)
+                .baseUrl(getAVConfiguration())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         apiService = retrofit.create(ApiServiceEvent.class);
+    }
+
+    public static String getAVConfiguration(){
+        if (AVConfiguration.Staging){
+            return AVConfiguration.testBaseUrl;
+        } else {
+            return AVConfiguration.liveBaseUrl;
+        }
     }
 
     public ApiServiceEvent getApiService()

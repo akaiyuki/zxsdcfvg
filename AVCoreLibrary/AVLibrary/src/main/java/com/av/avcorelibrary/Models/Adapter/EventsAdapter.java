@@ -1,4 +1,4 @@
-package com.av.avcorelibrary.Views.Adapter;
+package com.av.avcorelibrary.Models.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
-
-import java.util.ArrayList;
 
 import io.realm.RealmResults;
 

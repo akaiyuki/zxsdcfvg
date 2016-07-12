@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AVCoreLibrary.iml" filepath="$PROJECT_DIR$/AVCoreLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AVLibrary/app.iml" filepath="$PROJECT_DIR$/AVLibrary/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AVLibrary/AVLibrary.iml" filepath="$PROJECT_DIR$/AVLibrary/AVLibrary.iml" />
     </modules>
   </component>
 </project>

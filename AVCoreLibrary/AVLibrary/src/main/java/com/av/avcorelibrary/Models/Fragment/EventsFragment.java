@@ -13,17 +13,13 @@ import com.av.avcorelibrary.Controller.Core.AVEngine;
 import com.av.avcorelibrary.Controller.Core.BaseActivity;
 import com.av.avcorelibrary.Controller.Rest.ApiResponse;
 import com.av.avcorelibrary.Controller.Rest.RestClient;
+import com.av.avcorelibrary.Models.Adapter.EventsAdapter;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
-import com.av.avcorelibrary.Views.Adapter.EventsAdapter;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Callback;

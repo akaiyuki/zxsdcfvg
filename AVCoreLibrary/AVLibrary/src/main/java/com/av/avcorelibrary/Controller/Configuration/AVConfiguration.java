@@ -6,5 +6,8 @@ package com.av.avcorelibrary.Controller.Configuration;
 public class AVConfiguration {
 
     public static String testBaseUrl = "http://54.169.241.247/partyphile_staging/api/";
+    public static String liveBaseUrl = "http://54.169.241.247/partyphile_staging/api/";
+
+    public static Boolean Staging = true;
 
 }
