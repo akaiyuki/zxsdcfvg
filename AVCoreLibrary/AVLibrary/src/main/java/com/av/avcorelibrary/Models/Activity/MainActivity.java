@@ -16,6 +16,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* set framelayout for fragment */
         setFrameLayout(R.id.framelayout_main);
 
         INSTANCE = this;

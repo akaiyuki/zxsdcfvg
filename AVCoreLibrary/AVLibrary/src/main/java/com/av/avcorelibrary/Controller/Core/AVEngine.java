@@ -28,7 +28,6 @@ public class AVEngine {
         Realm.setDefaultConfiguration(realmConfig);
 
         // Get a Realm instance for this thread
-
         return Realm.getDefaultInstance();
     }
 

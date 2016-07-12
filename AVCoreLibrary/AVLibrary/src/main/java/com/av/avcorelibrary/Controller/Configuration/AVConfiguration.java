@@ -10,6 +10,8 @@ public class AVConfiguration {
 
     public static String mainImageUrl = "http://api.partyphile.com/public/event_banner_pics/";
 
+
+    /* set to false to use live url */
     public static Boolean Staging = true;
 
 }

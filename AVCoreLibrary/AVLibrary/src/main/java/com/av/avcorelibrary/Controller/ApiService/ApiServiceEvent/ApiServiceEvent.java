@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 public interface ApiServiceEvent {
 
-    /* api Get Method Call */
+    /* api Get Method Call Event */
     @GET("event/public:getEvents:4")
     Call<ApiResponse> getEvent(@Query("venue_id") String venueId, @Query("is_rave") String raveId);
 

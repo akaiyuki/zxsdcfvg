@@ -60,7 +60,7 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
             }
             else { holder = (ViewHolder) convertView.getTag(); }
 
-            /* populate text view */
+            /* populate views */
             EventListObject row = mData.get(position);
             holder.text1.setText(row.getEventName());
 

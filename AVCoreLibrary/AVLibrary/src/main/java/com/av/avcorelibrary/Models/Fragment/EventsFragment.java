@@ -63,7 +63,6 @@ public class EventsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-
         ButterKnife.bind(this, view);
 
         if (results.isEmpty()){
@@ -72,13 +71,6 @@ public class EventsFragment extends Fragment {
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listview.setAdapter(mAdapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(), SlidingDrawerActivity.class));
-            }
-        });
 
         return view;
     }
@@ -94,6 +86,7 @@ public class EventsFragment extends Fragment {
                 if (response.isSuccessful()){
                     Log.d("api client response", response.body().getMessage());
 
+                    /* fetching json objects from api */
                     mResultSet.clear();
                     mResultSet.addAll(response.body().getData().getEvents());
                     mAdapter.notifyDataSetChanged();
