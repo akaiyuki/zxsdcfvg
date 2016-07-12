@@ -16,8 +16,10 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setFrameLayout(R.id.framelayout_main);
+
         INSTANCE = this;
-        AVEngine.switchFragment(this, new EventsFragment(), R.id.framelayout_main);
+        AVEngine.switchFragment(this, new EventsFragment(), getFrameLayout());
     }
 
 }

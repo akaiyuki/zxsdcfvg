@@ -1,12 +1,14 @@
 package com.av.avcorelibrary.Models.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.av.avcorelibrary.Controller.ApiService.ApiServiceEvent.ApiServiceEvent;
@@ -17,6 +19,7 @@ import com.av.avcorelibrary.Controller.Rest.RestClient;
 import com.av.avcorelibrary.Models.Adapter.EventsAdapter;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
+import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
 
 import java.util.ArrayList;
 
@@ -65,6 +68,17 @@ public class EventsFragment extends Fragment {
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listview.setAdapter(mAdapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                AVEngine.switchFragment((BaseActivity) getActivity(), new SlidingDrawerFragment(), ((BaseActivity) getActivity()).getFrameLayout());
+
+                startActivity(new Intent(getActivity(), SlidingDrawerActivity.class));
+
+
+            }
+        });
 
         return view;
     }
