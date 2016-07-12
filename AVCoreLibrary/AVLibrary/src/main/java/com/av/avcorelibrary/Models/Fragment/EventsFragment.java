@@ -103,6 +103,7 @@ public class EventsFragment extends Fragment {
                     for (int i = 0; i<mResultSet.size(); i++){
                         EventListObject eventListObject = realm.createObject(EventListObject.class);
                         eventListObject.setEventName(mResultSet.get(i).getEventName());
+                        eventListObject.setBannerImage(mResultSet.get(i).getBannerImage());
                     }
                     realm.commitTransaction();
                 }

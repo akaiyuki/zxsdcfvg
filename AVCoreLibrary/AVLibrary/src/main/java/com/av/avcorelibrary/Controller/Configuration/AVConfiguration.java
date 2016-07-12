@@ -8,6 +8,8 @@ public class AVConfiguration {
     public static String testBaseUrl = "http://54.169.241.247/partyphile_staging/api/";
     public static String liveBaseUrl = "http://54.169.241.247/partyphile_staging/api/";
 
+    public static String mainImageUrl = "http://api.partyphile.com/public/event_banner_pics/";
+
     public static Boolean Staging = true;
 
 }

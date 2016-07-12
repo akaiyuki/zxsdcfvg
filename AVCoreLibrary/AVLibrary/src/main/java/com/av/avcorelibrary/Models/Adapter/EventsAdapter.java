@@ -6,10 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.av.avcorelibrary.Controller.Configuration.AVConfiguration;
+import com.av.avcorelibrary.Controller.Core.AppController;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +30,7 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
 
         static class ViewHolder {
             @BindView(R.id.eventname) TextView text1;
+            @BindView(R.id.imgbanner) ImageView imgBanner;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
@@ -58,6 +63,10 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
             /* populate text view */
             EventListObject row = mData.get(position);
             holder.text1.setText(row.getEventName());
+
+            Glide.with(AppController.getInstance())
+                    .load(AVConfiguration.mainImageUrl+row.getBannerImage())
+                    .into(holder.imgBanner);
 
             return convertView;
         }
