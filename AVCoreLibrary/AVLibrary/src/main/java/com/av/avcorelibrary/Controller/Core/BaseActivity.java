@@ -2,12 +2,13 @@ package com.av.avcorelibrary.Controller.Core;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 /**
  * Created by CodeSyaona on 7/11/16.
  */
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends AppCompatActivity {
 
     public static BaseActivity INSTANCE;
 

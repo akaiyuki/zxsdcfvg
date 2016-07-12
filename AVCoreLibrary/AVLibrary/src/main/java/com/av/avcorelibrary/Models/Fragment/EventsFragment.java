@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.av.avcorelibrary.Controller.ApiService.ApiServiceEvent.ApiServiceEvent;
 import com.av.avcorelibrary.Controller.Core.AVEngine;
 import com.av.avcorelibrary.Controller.Core.BaseActivity;
 import com.av.avcorelibrary.Controller.Rest.ApiResponse;

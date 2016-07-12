@@ -1,7 +1,5 @@
 package com.av.avcorelibrary.Controller.Rest;
 
-import android.util.Log;
-
 import com.av.avcorelibrary.Controller.ApiService.ApiServiceEvent.ApiServiceEvent;
 import com.av.avcorelibrary.Controller.Configuration.AVConfiguration;
 import com.google.gson.Gson;

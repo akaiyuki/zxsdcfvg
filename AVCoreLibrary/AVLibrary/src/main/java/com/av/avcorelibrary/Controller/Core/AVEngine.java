@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.av.avcorelibrary.Object.EventListObject;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -30,17 +28,17 @@ public class AVEngine {
         Realm.setDefaultConfiguration(realmConfig);
 
         // Get a Realm instance for this thread
-        Realm realm = Realm.getDefaultInstance();
 
-        return realm;
+        return Realm.getDefaultInstance();
     }
 
     public static void clearDatabase(Realm realm, String className) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
 
         Class classTemp = Class.forName(className);
-        Object obj =classTemp.newInstance();
+//        Object obj =classTemp.newInstance();
 
         realm.beginTransaction();
+        //noinspection unchecked
         realm.delete(classTemp);
         realm.commitTransaction();
 
