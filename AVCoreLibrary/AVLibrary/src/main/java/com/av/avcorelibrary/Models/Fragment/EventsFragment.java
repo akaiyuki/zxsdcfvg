@@ -79,6 +79,7 @@ public class EventsFragment extends Fragment {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()){
                     Log.d("api client response", response.body().getMessage());
+
                     mResultSet.clear();
                     mResultSet.addAll(response.body().getData().getEvents());
                     mAdapter.notifyDataSetChanged();

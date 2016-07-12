@@ -15,11 +15,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestClient {
 
-    private ApiServiceEvent apiServiceEvent;
+
     private Retrofit retrofit;
 
-    // Api Service Classes
+
+    // Api Service Classes String
     public static String eventApiService = "ApiServiceEvent.class";
+
+
+
+    // Api Selected Service
+    private ApiServiceEvent apiServiceEvent;
 
 
     public RestClient(String className)
@@ -54,7 +60,6 @@ public class RestClient {
     private void getApiRestService(String apiServiceSelected){
         if (apiServiceSelected.equalsIgnoreCase(eventApiService)){
             apiServiceEvent = retrofit.create(ApiServiceEvent.class);
-            getApiServiceEvent();
         }
     }
 
