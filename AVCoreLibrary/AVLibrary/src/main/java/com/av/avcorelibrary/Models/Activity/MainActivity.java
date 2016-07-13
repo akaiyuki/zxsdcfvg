@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity {
         INSTANCE = this;
         AVEngine.switchFragment(this, new EventsFragment(), getFrameLayout());
 
+
     }
 
 
