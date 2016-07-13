@@ -14,13 +14,13 @@ import com.golovin.fluentstackbar.FluentSnackbar;
  */
 public class AVSnackBar {
 
-    public static FluentSnackbar mFluentSnackbar;
+    public static FluentSnackbar mSnackbar;
 
     public static void displaySnackBar(BaseActivity baseActivity){
 
-        mFluentSnackbar = new FluentSnackbar(baseActivity);
+        mSnackbar = new FluentSnackbar(baseActivity);
 
-        mFluentSnackbar.create("Text")
+        mSnackbar.create("Text")
                 .maxLines(2) // default is 1 line
                 .backgroundColorRes(R.color.colorPrimaryDark) // default is #323232
                 .textColorRes(R.color.colorTextColor) // default is Color.WHITE
