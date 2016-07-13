@@ -70,7 +70,7 @@ public class EventsFragment extends Fragment {
 
         if (results.isEmpty()){
             requestApiGetEvents();
-        } 
+        }
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listView.setAdapter(mAdapter);
