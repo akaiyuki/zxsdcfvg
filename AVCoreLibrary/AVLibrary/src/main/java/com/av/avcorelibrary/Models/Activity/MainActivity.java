@@ -10,6 +10,7 @@ import com.av.avcorelibrary.Controller.Core.BaseActivity;
 import com.av.avcorelibrary.Models.Fragment.EventsFragment;
 import com.av.avcorelibrary.R;
 import com.av.avcorelibrary.Views.Snackbar.AVSnackBar;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +32,6 @@ public class MainActivity extends BaseActivity {
 
         INSTANCE = this;
         AVEngine.switchFragment(this, new EventsFragment(), getFrameLayout());
-
-        AVSnackBar.displaySnackBar(INSTANCE);
 
     }
 

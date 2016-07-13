@@ -111,7 +111,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-
+                Log.d("api response", t.getMessage());
             }
         });
     }
