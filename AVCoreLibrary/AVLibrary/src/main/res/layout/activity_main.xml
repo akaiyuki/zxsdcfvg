@@ -3,11 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Models.Activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/framelayout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avloadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicator="BallPulse"
+        app:indicator_color="@color/colorTextColor"
+        android:layout_centerInParent="true"
+    />
 
 </RelativeLayout>

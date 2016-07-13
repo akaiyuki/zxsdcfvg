@@ -18,6 +18,7 @@ import com.av.avcorelibrary.Controller.Rest.RestClient;
 import com.av.avcorelibrary.Models.Adapter.EventsAdapter;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
+import com.av.avcorelibrary.Views.Gesture.SwipeActivity;
 import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class EventsFragment extends Fragment {
     private RealmResults<EventListObject> results;
 
     @BindView(R.id.listview_events)
-    ListView listview;
+    ListView listView;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -70,7 +71,14 @@ public class EventsFragment extends Fragment {
         }
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
-        listview.setAdapter(mAdapter);
+        listView.setAdapter(mAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getActivity(), SwipeActivity.class));
+            }
+        });
 
         return view;
     }
