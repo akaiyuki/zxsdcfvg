@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.av.avcorelibrary.Controller.Core.AVEngine;
+import com.av.avcorelibrary.Controller.Core.AppController;
 import com.av.avcorelibrary.Controller.Core.BaseActivity;
 import com.av.avcorelibrary.Models.Fragment.EventsFragment;
 import com.av.avcorelibrary.R;
+import com.av.avcorelibrary.Views.Snackbar.AVSnackBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,7 @@ public class MainActivity extends BaseActivity {
         INSTANCE = this;
         AVEngine.switchFragment(this, new EventsFragment(), getFrameLayout());
 
+        AVSnackBar.displaySnackBar(INSTANCE);
 
     }
 

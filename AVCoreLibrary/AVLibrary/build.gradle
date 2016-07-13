@@ -21,6 +21,9 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -44,4 +47,6 @@ dependencies {
 
     compile 'com.wang.avi:library:1.0.5'
     compile 'com.nineoldandroids:library:2.4.0'
+
+    compile 'com.github.antonygolovin:fluentsnackbar:0.1.3'
 }
