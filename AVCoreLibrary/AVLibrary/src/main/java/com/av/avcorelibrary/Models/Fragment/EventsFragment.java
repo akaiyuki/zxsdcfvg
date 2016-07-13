@@ -18,6 +18,7 @@ import com.av.avcorelibrary.Controller.Rest.RestClient;
 import com.av.avcorelibrary.Models.Adapter.EventsAdapter;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
+import com.av.avcorelibrary.Realm.RealmController;
 import com.av.avcorelibrary.Views.Gesture.SwipeActivity;
 import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
 
@@ -52,7 +53,7 @@ public class EventsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        realm = AVEngine.realmConfiguration((BaseActivity) getActivity());
+        realm = RealmController.with(this).getRealm();
         results = realm.where(EventListObject.class).findAll();
 
     }
@@ -72,13 +73,6 @@ public class EventsFragment extends Fragment {
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listView.setAdapter(mAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(), SwipeActivity.class));
-            }
-        });
 
         return view;
     }
@@ -106,6 +100,7 @@ public class EventsFragment extends Fragment {
                         eventListObject.setBannerImage(mResultSet.get(i).getBannerImage());
                     }
                     realm.commitTransaction();
+
                 }
             }
 
