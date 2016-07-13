@@ -22,25 +22,4 @@ public class AVEngine {
         transaction.commit();
     }
 
-//    public static Realm realmConfiguration(BaseActivity baseActivity){
-//        // Create a RealmConfiguration that saves the Realm file in the app's "files" directory.
-//        RealmConfiguration realmConfig = new RealmConfiguration.Builder(baseActivity).build();
-//        Realm.setDefaultConfiguration(realmConfig);
-//
-//        // Get a Realm instance for this thread
-//        return Realm.getDefaultInstance();
-//    }
-//
-//    public static void clearDatabase(Realm realm, String className) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-//
-//        Class classTemp = Class.forName(className);
-////        Object obj =classTemp.newInstance();
-//
-//        realm.beginTransaction();
-//        //noinspection unchecked
-//        realm.delete(classTemp);
-//        realm.commitTransaction();
-//
-//    }
-
 }
