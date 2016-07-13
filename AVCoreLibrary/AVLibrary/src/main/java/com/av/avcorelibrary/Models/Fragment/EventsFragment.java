@@ -53,8 +53,9 @@ public class EventsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /* set realm configuration to this fragment */
         realm = RealmController.with(this).getRealm();
-        results = realm.where(EventListObject.class).findAll();
+        results = RealmController.getInstance().getEvents();
 
     }
 
@@ -69,7 +70,7 @@ public class EventsFragment extends Fragment {
 
         if (results.isEmpty()){
             requestApiGetEvents();
-        }
+        } 
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listView.setAdapter(mAdapter);
@@ -95,7 +96,7 @@ public class EventsFragment extends Fragment {
 
                     realm.beginTransaction();
                     for (int i = 0; i<mResultSet.size(); i++){
-                        EventListObject eventListObject = realm.createObject(EventListObject.class);
+                        EventListObject eventListObject = RealmController.getInstance().createEventObject();
                         eventListObject.setEventName(mResultSet.get(i).getEventName());
                         eventListObject.setBannerImage(mResultSet.get(i).getBannerImage());
                     }

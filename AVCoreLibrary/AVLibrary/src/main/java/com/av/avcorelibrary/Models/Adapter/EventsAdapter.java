@@ -29,6 +29,7 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
         int mResId;
 
         static class ViewHolder {
+
             @BindView(R.id.eventname) TextView text1;
             @BindView(R.id.imgbanner) ImageView imgBanner;
 
@@ -64,6 +65,7 @@ public class EventsAdapter extends ArrayAdapter<EventListObject> {
             EventListObject row = mData.get(position);
             holder.text1.setText(row.getEventName());
 
+            /* adding image background */
             Glide.with(AppController.getInstance())
                     .load(AVConfiguration.mainImageUrl+row.getBannerImage())
                     .into(holder.imgBanner);

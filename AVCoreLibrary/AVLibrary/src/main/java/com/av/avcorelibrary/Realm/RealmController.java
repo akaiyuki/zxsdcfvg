@@ -56,7 +56,7 @@ public class RealmController {
     }
 
 
-    //clear all objects
+    //delete event class
     public void clearAll() {
 
         realm.beginTransaction();
@@ -76,8 +76,13 @@ public class RealmController {
         return realm.where(EventListObject.class).equalTo("event_id", id).findFirst();
     }
 
+    //create realm event object
+    public EventListObject createEventObject(){
+        return realm.createObject(EventListObject.class);
+    }
 
-    //query example
+
+    //query event example
     public RealmResults<EventListObject> queryedEvents() {
 
         return realm.where(EventListObject.class)
