@@ -21,6 +21,7 @@ import com.av.avcorelibrary.R;
 import com.av.avcorelibrary.Realm.RealmController;
 import com.av.avcorelibrary.Views.Gesture.SwipeActivity;
 import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
+import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -41,9 +42,15 @@ public class EventsFragment extends Fragment {
     private ArrayList<EventListObject> mResultSet = new ArrayList<>();
     private Realm realm;
     private RealmResults<EventListObject> results;
+    private Boolean isRefreshing;
 
     @BindView(R.id.listview_events)
     ListView listView;
+
+    @BindView(R.id.refresh_layout)
+    CircleRefreshLayout mRefreshLayout;
+
+
 
     public EventsFragment() {
         // Required empty public constructor
@@ -69,11 +76,25 @@ public class EventsFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         if (results.isEmpty()){
+            isRefreshing = false;
             requestApiGetEvents();
         }
 
         mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
         listView.setAdapter(mAdapter);
+
+        mRefreshLayout.setOnRefreshListener(new CircleRefreshLayout.OnCircleRefreshListener() {
+            @Override
+            public void completeRefresh() {
+            }
+
+            @Override
+            public void refreshing() {
+                isRefreshing = true;
+                RealmController.getInstance().clearAll();
+                requestApiGetEvents();
+            }
+        });
 
         return view;
     }
@@ -101,13 +122,22 @@ public class EventsFragment extends Fragment {
                         eventListObject.setBannerImage(mResultSet.get(i).getBannerImage());
                     }
                     realm.commitTransaction();
-
                 }
+
+                if (isRefreshing){
+                    mRefreshLayout.finishRefreshing();
+                }
+
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Log.d("api response", t.getMessage());
+
+                if (isRefreshing){
+                    mRefreshLayout.finishRefreshing();
+                }
+
             }
         });
     }
