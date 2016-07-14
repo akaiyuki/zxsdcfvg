@@ -14,78 +14,78 @@ import io.realm.RealmResults;
  */
 public class RealmController {
 
-    private static RealmController instance;
-    private final Realm realm;
+    private static RealmController mInstance;
+    private final Realm mRealm;
 
     public RealmController(Application application) {
-        realm = Realm.getDefaultInstance();
+        mRealm = Realm.getDefaultInstance();
     }
 
     public static RealmController with(Fragment fragment) {
 
-        if (instance == null) {
-            instance = new RealmController(fragment.getActivity().getApplication());
+        if (mInstance == null) {
+            mInstance = new RealmController(fragment.getActivity().getApplication());
         }
-        return instance;
+        return mInstance;
     }
 
     public static RealmController with(Activity activity) {
 
-        if (instance == null) {
-            instance = new RealmController(activity.getApplication());
+        if (mInstance == null) {
+            mInstance = new RealmController(activity.getApplication());
         }
-        return instance;
+        return mInstance;
     }
 
     public static RealmController with(Application application) {
 
-        if (instance == null) {
-            instance = new RealmController(application);
+        if (mInstance == null) {
+            mInstance = new RealmController(application);
         }
-        return instance;
+        return mInstance;
     }
 
     public static RealmController getInstance() {
 
-        return instance;
+        return mInstance;
     }
 
     public Realm getRealm() {
 
-        return realm;
+        return mRealm;
     }
 
 
     //delete event class
     public void clearAll() {
 
-        realm.beginTransaction();
-        realm.delete(EventListObject.class);
-        realm.commitTransaction();
+        mRealm.beginTransaction();
+        mRealm.delete(EventListObject.class);
+        mRealm.commitTransaction();
     }
 
     //find all objects
     public RealmResults<EventListObject> getEvents() {
 
-        return realm.where(EventListObject.class).findAll();
+        return mRealm.where(EventListObject.class).findAll();
     }
 
     //query a single item with the given id
     public EventListObject getEvent(String id) {
 
-        return realm.where(EventListObject.class).equalTo("event_id", id).findFirst();
+        return mRealm.where(EventListObject.class).equalTo("event_id", id).findFirst();
     }
 
     //create realm event object
     public EventListObject createEventObject(){
-        return realm.createObject(EventListObject.class);
+        return mRealm.createObject(EventListObject.class);
     }
 
 
     //query event example
     public RealmResults<EventListObject> queryedEvents() {
 
-        return realm.where(EventListObject.class)
+        return mRealm.where(EventListObject.class)
                 .contains("event_name", "Tuesdays at Chaos")
                 .or()
                 .contains("venue_name", "Chaos")
