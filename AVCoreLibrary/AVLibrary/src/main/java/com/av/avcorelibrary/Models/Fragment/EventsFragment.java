@@ -1,26 +1,20 @@
 package com.av.avcorelibrary.Models.Fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.av.avcorelibrary.Controller.Core.AVEngine;
-import com.av.avcorelibrary.Controller.Core.BaseActivity;
+import com.av.avcorelibrary.Controller.Realm.RealmController;
 import com.av.avcorelibrary.Controller.Rest.ApiResponse;
 import com.av.avcorelibrary.Controller.Rest.RestClient;
 import com.av.avcorelibrary.Models.Adapter.EventsAdapter;
 import com.av.avcorelibrary.Object.EventListObject;
 import com.av.avcorelibrary.R;
-import com.av.avcorelibrary.Realm.RealmController;
-import com.av.avcorelibrary.Views.Gesture.SwipeActivity;
-import com.av.avcorelibrary.Views.SlidingPanel.SlidingDrawerActivity;
 import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 
 import java.util.ArrayList;
@@ -86,6 +80,9 @@ public class EventsFragment extends Fragment {
         mRefreshLayout.setOnRefreshListener(new CircleRefreshLayout.OnCircleRefreshListener() {
             @Override
             public void completeRefresh() {
+                mAdapter = new EventsAdapter(getActivity(),R.layout.custom_row_list, results);
+                mAdapter.notifyDataSetChanged();
+                listView.setAdapter(mAdapter);
             }
 
             @Override
